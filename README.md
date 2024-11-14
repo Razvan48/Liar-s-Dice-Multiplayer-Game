@@ -8,7 +8,7 @@
 ## Setup  
 Clone Repository:
 ```sh
-git clone 
+git clone https://github.com/Razvan48/Liar-s-Dice-Multiplayer-Game
 ```
 
 &emsp; The project can be built and run only on Windows, in release/debug mode 64-bit, using Visual Studio 2022. <br/>
