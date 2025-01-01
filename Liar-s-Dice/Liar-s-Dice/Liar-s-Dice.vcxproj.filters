@@ -13,10 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\GlobalClock">
+      <UniqueIdentifier>{8f39b4f7-0441-4ca4-9ba4-d318ac205d5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RandomGenerator">
+      <UniqueIdentifier>{160d115a-36f8-4731-a1d7-193a6e6341bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\InputManager">
+      <UniqueIdentifier>{53162b2f-dc99-46c7-b6d2-eafc67282a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WindowManager">
+      <UniqueIdentifier>{6e1f4fdd-1bb1-404a-b1c2-bae1cfb7e492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{4d13ffb9-c825-4bb4-b10a-583927c9411f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AssetManager">
+      <UniqueIdentifier>{809df52f-826b-45a5-9663-bac35bb8684d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderer">
+      <UniqueIdentifier>{d4c98f85-bb71-46b2-a796-7221fd66af94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\GlobalClock\GlobalClock.cpp">
+      <Filter>Source Files\GlobalClock</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RandomGenerator\RandomGenerator.cpp">
+      <Filter>Source Files\RandomGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="source\InputManager\InputManager.cpp">
+      <Filter>Source Files\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WindowManager\WindowManager.cpp">
+      <Filter>Source Files\WindowManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\Game.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AssetManager\AssetManager.cpp">
+      <Filter>Source Files\AssetManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\Renderer.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\GlobalClock\GlobalClock.h">
+      <Filter>Source Files\GlobalClock</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RandomGenerator\RandomGenerator.h">
+      <Filter>Source Files\RandomGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="source\InputManager\InputManager.h">
+      <Filter>Source Files\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WindowManager\WindowManager.h">
+      <Filter>Source Files\WindowManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Game\Game.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AssetManager\AssetManager.h">
+      <Filter>Source Files\AssetManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\Renderer.h">
+      <Filter>Source Files\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
