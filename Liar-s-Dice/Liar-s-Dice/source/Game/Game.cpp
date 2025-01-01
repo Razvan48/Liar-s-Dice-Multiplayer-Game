@@ -10,6 +10,7 @@
 #include <iostream>
 
 Game::Game()
+	: status(Status::IN_MAIN_MENU)
 {
 
 }
@@ -58,12 +59,23 @@ void Game::run()
 
 void Game::draw()
 {
-
+	// TODO: switch dupa status, desenam interfetele
 }
 
 void Game::update()
 {
-	InputManager::get().update();
+	// switch dupa status pentru update la interfete
+
+	if (this->status == Status::EXITING)
+	{
+		glfwSetWindowShouldClose(WindowManager::get().getWindow(), GLFW_TRUE);
+	}
+	else if (InputManager::get().isKeyReleased(GLFW_KEY_ESCAPE))
+	{
+		this->status = Status::EXITING;
+	}
+
+	InputManager::get().update(); // Trebuie sa fie ultimul update, deoarece curata ce butoane s-au apasat.
 }
 
 void Game::start()

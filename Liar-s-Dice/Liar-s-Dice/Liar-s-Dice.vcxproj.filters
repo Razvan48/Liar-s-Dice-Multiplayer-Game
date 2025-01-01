@@ -34,6 +34,33 @@
     <Filter Include="Source Files\Renderer">
       <UniqueIdentifier>{d4c98f85-bb71-46b2-a796-7221fd66af94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{adf74299-ee38-4db6-b8bb-11987de5b005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\TexturableEntity">
+      <UniqueIdentifier>{9c57c99e-2fd9-4fc2-8eef-016a0a8a8452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\TextOnBackgroundEntity">
+      <UniqueIdentifier>{51127ca6-7346-4c80-849e-24c8741d7ff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\TextEntity">
+      <UniqueIdentifier>{3585f263-428f-4ecf-a031-c4110cd6fde6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\DataBox">
+      <UniqueIdentifier>{9ce3a114-3ca7-4042-9572-9aa8840c2068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Button">
+      <UniqueIdentifier>{3de0889a-dfac-4613-bede-4a18a6178fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualInterface">
+      <UniqueIdentifier>{38901881-cc01-4842-b1c6-040abd9be601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Client">
+      <UniqueIdentifier>{898890d3-95b9-4056-8d91-7a3bb26946e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Server">
+      <UniqueIdentifier>{63e25fd5-8ecf-4be7-8016-4efafc848379}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -60,6 +87,33 @@
     <ClCompile Include="source\Renderer\Renderer.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="source\Entity\Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Entity\TexturableEntity\TexturableEntity.cpp">
+      <Filter>Source Files\Entity\TexturableEntity</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Entity\TextEntity\TextEntity.cpp">
+      <Filter>Source Files\Entity\TextEntity</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Entity\TextOnBackgroundEntity\TextOnBackgroundEntity.cpp">
+      <Filter>Source Files\Entity\TextOnBackgroundEntity</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Entity\DataBox\DataBox.cpp">
+      <Filter>Source Files\Entity\DataBox</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Entity\Button\Button.cpp">
+      <Filter>Source Files\Entity\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisualInterface\VisualInterface.cpp">
+      <Filter>Source Files\VisualInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Client\Client.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\Server.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GlobalClock\GlobalClock.h">
@@ -82,6 +136,33 @@
     </ClInclude>
     <ClInclude Include="source\Renderer\Renderer.h">
       <Filter>Source Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Entity\Entity.h">
+      <Filter>Source Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Entity\TexturableEntity\TexturableEntity.h">
+      <Filter>Source Files\Entity\TexturableEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Entity\TextEntity\TextEntity.h">
+      <Filter>Source Files\Entity\TextEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Entity\TextOnBackgroundEntity\TextOnBackgroundEntity.h">
+      <Filter>Source Files\Entity\TextOnBackgroundEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Entity\DataBox\DataBox.h">
+      <Filter>Source Files\Entity\DataBox</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Entity\Button\Button.h">
+      <Filter>Source Files\Entity\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\VisualInterface.h">
+      <Filter>Source Files\VisualInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Client\Client.h">
+      <Filter>Source Files\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Server\Server.h">
+      <Filter>Source Files\Server</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
