@@ -4,8 +4,8 @@
 #include "../../InputManager/InputManager.h"
 #include "../../AssetManager/AssetManager.h"
 
-Button::Button(float centerPosX, float centerPosY, float width, float height, float rotateAngle, const glm::vec3& color, const std::string& fontName, const std::string& text, const std::string& textureName
-	, const std::string& soundNameWhenPressed, const std::string& textureNameWhenHovered, const glm::vec3 colorWhenHovered, const std::string& soundNameWhenHovered)
+Button::Button(float centerPosX, float centerPosY, float width, float height, float rotateAngle, const std::string& text, const std::string& textureName
+	, const std::string& soundNameWhenPressed, const std::string& textureNameWhenHovered, const glm::vec3& colorWhenHovered, const std::string& soundNameWhenHovered, const std::string& textureNameWhenInactive, const glm::vec3& colorWhenInactive)
 	: Entity(centerPosX, centerPosY, width, height, rotateAngle)
 	, TextEntity(centerPosX, centerPosY, width, height, rotateAngle, text)
 	, TexturableEntity(centerPosX, centerPosY, width, height, rotateAngle, textureName)
@@ -14,7 +14,7 @@ Button::Button(float centerPosX, float centerPosY, float width, float height, fl
 	, soundNameWhenPressed(soundNameWhenPressed)
 	, textureNameWhenHovered(textureNameWhenHovered), colorWhenHovered(colorWhenHovered)
 	, soundNameWhenHovered(soundNameWhenHovered)
-	, recentlyInteractedWith(false)
+	, textureNameWhenInactive(textureNameWhenInactive), colorWhenInactive(colorWhenInactive)
 {
 
 }
@@ -34,9 +34,13 @@ void Button::draw()
 	{
 		currentTexture = this->textureName;
 	}
-	else // if (this->status == Button::Status::HOVERED)
+	else if (this->status == Button::Status::HOVERED)
 	{
 		currentTexture = this->textureNameWhenHovered;
+	}
+	else // if (this->status == Button::Status::INACTIVE)
+	{
+		currentTexture = this->textureNameWhenInactive;
 	}
 
 	Renderer::get().draw( // background
@@ -66,9 +70,13 @@ void Button::draw()
 	{
 		currentColor = this->color;
 	}
-	else // if (this->status == Button::Status::HOVERED)
+	else if (this->status == Button::Status::HOVERED)
 	{
 		currentColor = this->colorWhenHovered;
+	}
+	else // if (this->status == Button::Status::INACTIVE)
+	{
+		currentColor = this->colorWhenInactive;
 	}
 	Renderer::get().drawText(
 		this->posCenterX,
@@ -87,7 +95,8 @@ void Button::update()
 	if (!this->canBeUpdated)
 		return;
 
-	this->recentlyInteractedWith = false;
+	if (this->status == Button::Status::INACTIVE)
+		return;
 
 	if (this->isInMouseCollision())
 	{
@@ -95,7 +104,6 @@ void Button::update()
 			&& this->isInMouseLastPressedCollision())
 		{
 			AssetManager::get().playSound(this->soundNameWhenPressed, false, false);
-			this->recentlyInteractedWith = true;
 		}
 		else
 		{

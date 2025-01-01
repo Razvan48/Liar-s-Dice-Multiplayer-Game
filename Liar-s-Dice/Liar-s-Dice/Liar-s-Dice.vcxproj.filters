@@ -61,6 +61,12 @@
     <Filter Include="Source Files\Server">
       <UniqueIdentifier>{63e25fd5-8ecf-4be7-8016-4efafc848379}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\VisualInterface\MainMenuVisualInterface">
+      <UniqueIdentifier>{9040e838-7eb8-4dba-b1aa-bb15385443dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualInterface\SettingsMenuVisualInterface">
+      <UniqueIdentifier>{5c180251-475d-47a6-b4b3-1c3e2c7c6f9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -114,6 +120,12 @@
     <ClCompile Include="source\Server\Server.cpp">
       <Filter>Source Files\Server</Filter>
     </ClCompile>
+    <ClCompile Include="source\VisualInterface\MainMenuVisualInterface\MainMenuVisualInterface.cpp">
+      <Filter>Source Files\VisualInterface\MainMenuVisualInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisualInterface\SettingsMenuVisualInterface\SettingsMenuVisualInterface.cpp">
+      <Filter>Source Files\VisualInterface\SettingsMenuVisualInterface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GlobalClock\GlobalClock.h">
@@ -163,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="source\Server\Server.h">
       <Filter>Source Files\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\MainMenuVisualInterface\MainMenuVisualInterface.h">
+      <Filter>Source Files\VisualInterface\MainMenuVisualInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\SettingsMenuVisualInterface\SettingsMenuVisualInterface.h">
+      <Filter>Source Files\VisualInterface\SettingsMenuVisualInterface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

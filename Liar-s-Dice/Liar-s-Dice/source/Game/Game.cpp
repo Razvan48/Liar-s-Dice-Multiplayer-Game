@@ -1,9 +1,13 @@
 #include "Game.h"
 
+
 #include "../WindowManager/WindowManager.h"
 #include "../AssetManager/AssetManager.h"
 #include "../Renderer/Renderer.h"
 #include "../InputManager/InputManager.h"
+
+#include "../VisualInterface/MainMenuVisualInterface/MainMenuVisualInterface.h"
+#include "../VisualInterface//SettingsMenuVisualInterface/SettingsMenuVisualInterface.h"
 
 #include <enet/enet.h>
 
@@ -60,11 +64,30 @@ void Game::run()
 void Game::draw()
 {
 	// TODO: switch dupa status, desenam interfetele
+	switch (this->status)
+	{
+	case Status::IN_MAIN_MENU:
+		MainMenuVisualInterface::get().draw();
+		break;
+	case Status::IN_SETTINGS_MENU:
+		SettingsMenuVisualInterface::get().draw();
+		break;
+	}
 }
 
 void Game::update()
 {
-	// switch dupa status pentru update la interfete
+	// TODO: switch dupa status pentru update la interfete
+
+	switch (this->status)
+	{
+	case Status::IN_MAIN_MENU:
+		MainMenuVisualInterface::get().update();
+		break;
+	case Status::IN_SETTINGS_MENU:
+		SettingsMenuVisualInterface::get().update();
+		break;
+	}
 
 	if (this->status == Status::EXITING)
 	{

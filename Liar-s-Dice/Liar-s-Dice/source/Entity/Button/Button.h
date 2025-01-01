@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../TextOnBackgroundEntity/TextOnBackgroundEntity.h"
-#include "../../Game/Game.h"
 
 class Button : virtual public TextOnBackgroundEntity
 {
@@ -10,6 +9,7 @@ public:
 	{
 		RELEASED,
 		HOVERED,
+		INACTIVE,
 	};
 
 protected:
@@ -21,16 +21,17 @@ protected:
 	glm::vec3 colorWhenHovered;
 	std::string soundNameWhenHovered;
 
-	bool recentlyInteractedWith;
+	std::string textureNameWhenInactive;
+	glm::vec3 colorWhenInactive;
 
 public:
-	Button(float centerPosX, float centerPosY, float width, float height, float rotateAngle, const glm::vec3& color, const std::string& fontName, const std::string& text, const std::string& textureName
-		, const std::string& soundNameWhenPressed, const std::string& textureNameWhenHovered, const glm::vec3 colorWhenHovered, const std::string& soundNameWhenHovered);
+	Button(float centerPosX, float centerPosY, float width, float height, float rotateAngle, const std::string& text, const std::string& textureName
+		, const std::string& soundNameWhenPressed, const std::string& textureNameWhenHovered, const glm::vec3& colorWhenHovered, const std::string& soundNameWhenHovered, const std::string& textureNameWhenInactive, const glm::vec3& colorWhenInactive);
 	virtual ~Button();
 
 	virtual void draw() override;
 	virtual void update() override;
 
-	inline bool getRecentlyInteractedWith() const { return this->recentlyInteractedWith; }
+	inline void setStatus(Button::Status status) { this->status = status; }
 };
 
