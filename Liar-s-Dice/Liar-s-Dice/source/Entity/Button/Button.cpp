@@ -26,6 +26,9 @@ Button::~Button()
 
 void Button::draw()
 {
+	if (!this->canBeDrawn)
+		return;
+
 	std::string currentTexture = "";
 	if (this->status == Button::Status::RELEASED)
 	{
@@ -81,6 +84,9 @@ void Button::draw()
 
 void Button::update()
 {
+	if (!this->canBeUpdated)
+		return;
+
 	this->recentlyInteractedWith = false;
 
 	if (this->isInMouseCollision())

@@ -20,11 +20,17 @@ DataBox::~DataBox()
 
 void DataBox::draw()
 {
+	if (!this->canBeDrawn)
+		return;
+
 	TextOnBackgroundEntity::draw();
 }
 
 void DataBox::update()
 {
+	if (!this->canBeUpdated)
+		return;
+
 	if (InputManager::get().isLeftMouseButtonReleased() && this->isInCompleteMouseCollision())
 	{
 		if (this->isSelected == false && this->text.empty())

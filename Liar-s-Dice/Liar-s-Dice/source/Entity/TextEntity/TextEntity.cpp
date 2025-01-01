@@ -20,6 +20,9 @@ const float TextEntity::TEXT_PADDING_1 = 0.75f;
 
 void TextEntity::draw()
 {
+	if (!this->canBeDrawn)
+		return;
+
 	/*
 	Renderer::get().drawText( // contur
 		this->posCenterX,
@@ -47,6 +50,7 @@ void TextEntity::draw()
 
 void TextEntity::update()
 {
-
+	if (!this->canBeUpdated)
+		return;
 }
 

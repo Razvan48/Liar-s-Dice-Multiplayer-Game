@@ -18,6 +18,9 @@ TextOnBackgroundEntity::~TextOnBackgroundEntity()
 
 void TextOnBackgroundEntity::draw()
 {
+	if (!this->canBeDrawn)
+		return;
+
 	TexturableEntity::draw();
 
 	TextEntity::draw();
@@ -25,5 +28,6 @@ void TextOnBackgroundEntity::draw()
 
 void TextOnBackgroundEntity::update()
 {
-
+	if (!this->canBeUpdated)
+		return;
 }

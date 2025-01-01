@@ -16,6 +16,9 @@ TexturableEntity::~TexturableEntity()
 
 void TexturableEntity::draw()
 {
+	if (!this->canBeDrawn)
+		return;
+
 	Renderer::get().draw(
 		this->posCenterX,
 		this->posCenterY,
@@ -28,5 +31,6 @@ void TexturableEntity::draw()
 
 void TexturableEntity::update()
 {
-
+	if (!this->canBeUpdated)
+		return;
 }
