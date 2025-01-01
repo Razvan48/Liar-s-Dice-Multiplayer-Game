@@ -133,60 +133,51 @@ void AssetManager::loadFont(const std::string& fontName, const std::string& font
 
 void AssetManager::loadResources()
 {
-	/*
-	this->loadTexture("mainMenuBackgroundTexture", "assets/textures/mainMenuBackgroundTexture.png");
-	this->loadTexture("settingsMenuBackgroundTexture", "assets/textures/settingsMenuBackgroundTexture.png");
-	this->loadTexture("modeMenuBackgroundTexture", "assets/textures/modeMenuBackgroundTexture.png");
-	this->loadTexture("singleplayerColorMenuBackgroundTexture", "assets/textures/singleplayerColorMenuBackgroundTexture.png");
-	this->loadTexture("multiplayerColorMenuBackgroundTexture", "assets/textures/multiplayerColorMenuBackgroundTexture.png");
-	this->loadTexture("multiplayerMenuBackgroundTexture", "assets/textures/multiplayerMenuBackgroundTexture.png");
-	this->loadTexture("inputCreateMenuBackgroundTexture", "assets/textures/inputCreateMenuBackgroundTexture.png");
-	this->loadTexture("inputJoinMenuBackgroundTexture", "assets/textures/inputJoinMenuBackgroundTexture.png");
-	this->loadTexture("singleplayerGameBackgroundTexture", "assets/textures/singleplayerGameBackgroundTexture.png");
-	this->loadTexture("createdMultiplayerGameBackgroundTexture", "assets/textures/createdMultiplayerGameBackgroundTexture.png");
-	this->loadTexture("joinedMultiplayerGameBackgroundTexture", "assets/textures/joinedMultiplayerGameBackgroundTexture.png");
+	this->loadFont("arialFont", "assets/fonts/arialFont.ttf");
 
-	this->loadTexture("whitePawnTexture", "assets/textures/whitePawnTexture.png");
-	this->loadTexture("whiteRookTexture", "assets/textures/whiteRookTexture.png");
-	this->loadTexture("whiteKnightTexture", "assets/textures/whiteKnightTexture.png");
-	this->loadTexture("whiteBishopTexture", "assets/textures/whiteBishopTexture.png");
-	this->loadTexture("whiteQueenTexture", "assets/textures/whiteQueenTexture.png");
-	this->loadTexture("whiteKingTexture", "assets/textures/whiteKingTexture.png");
 
-	this->loadTexture("blackPawnTexture", "assets/textures/blackPawnTexture.png");
-	this->loadTexture("blackRookTexture", "assets/textures/blackRookTexture.png");
-	this->loadTexture("blackKnightTexture", "assets/textures/blackKnightTexture.png");
-	this->loadTexture("blackBishopTexture", "assets/textures/blackBishopTexture.png");
-	this->loadTexture("blackQueenTexture", "assets/textures/blackQueenTexture.png");
-	this->loadTexture("blackKingTexture", "assets/textures/blackKingTexture.png");
 
-	this->loadTexture("buttonTexture", "assets/textures/buttonTexture.png");
-	this->loadTexture("buttonHoveredTexture", "assets/textures/buttonHoveredTexture.png");
-	this->loadTexture("dataBoxTexture", "assets/textures/dataBoxTexture.png");
-
-	this->loadTexture("whiteBoardTileTexture", "assets/textures/whiteBoardTileTexture.png");
-	this->loadTexture("blackBoardTileTexture", "assets/textures/blackBoardTileTexture.png");
-	this->loadTexture("selectedBoardTileTexture", "assets/textures/selectedBoardTileTexture.png");
+	this->loadSound("boardStart0Sound", "assets/sounds/boardStart0Sound.mp3");
+	this->loadSound("boardStart1Sound", "assets/sounds/boardStart1Sound.mp3");
 
 	this->loadSound("buttonHoveredSound", "assets/sounds/buttonHoveredSound.mp3");
 	this->loadSound("buttonPressedSound", "assets/sounds/buttonPressedSound.mp3");
-	this->loadSound("pieceMoveSound", "assets/sounds/pieceMoveSound.mp3");
-	this->loadSound("pieceCaptureSound", "assets/sounds/pieceCaptureSound.mp3");
-	this->loadSound("boardStartSound", "assets/sounds/boardStartSound.mp3");
+
+	this->loadSound("dice0Sound", "assets/sounds/dice0Sound.mp3");
+	this->loadSound("dice1Sound", "assets/sounds/dice1Sound.mp3");
+
 	this->loadSound("errorSound", "assets/sounds/errorSound.mp3");
+
+	this->loadSound("lose0Sound", "assets/sounds/lose0Sound.mp3");
 
 	this->loadSound("win0Sound", "assets/sounds/win0Sound.mp3");
 	this->loadSound("win1Sound", "assets/sounds/win1Sound.mp3");
 
-	this->loadSound("lose0Sound", "assets/sounds/lose0Sound.mp3");
 
-	this->loadSound("draw0Sound", "assets/sounds/draw0Sound.mp3");
-	this->loadSound("draw1Sound", "assets/sounds/draw1Sound.mp3");
-	this->loadSound("draw2Sound", "assets/sounds/draw2Sound.mp3");
-	this->loadSound("draw3Sound", "assets/sounds/draw3Sound.mp3");
-	*/
 
-	this->loadFont("arialFont", "assets/fonts/arialFont.ttf");
+	this->loadTexture("arrowTexture", "assets/textures/arrowTexture.png");
+	this->loadTexture("buttonTexture", "assets/textures/buttonTexture.png");
+	this->loadTexture("cupTexture", "assets/textures/cupTexture.png");
+	this->loadTexture("dataBoxTexture", "assets/textures/dataBoxTexture.png");
+
+	this->loadTexture("dice1Texture", "assets/textures/dice1Texture.png");
+	this->loadTexture("dice2Texture", "assets/textures/dice2Texture.png");
+	this->loadTexture("dice3Texture", "assets/textures/dice3Texture.png");
+	this->loadTexture("dice4Texture", "assets/textures/dice4Texture.png");
+	this->loadTexture("dice5Texture", "assets/textures/dice5Texture.png");
+	this->loadTexture("dice6Texture", "assets/textures/dice6Texture.png");
+
+	this->loadTexture("hoveredArrowTexture", "assets/textures/hoveredArrowTexture.png");
+	this->loadTexture("hoveredButtonTexture", "assets/textures/hoveredButtonTexture.png");
+	this->loadTexture("inactiveArrowTexture", "assets/textures/inactiveArrowTexture.png");
+	this->loadTexture("inactiveButtonTexture", "assets/textures/inactiveButtonTexture.png");
+
+	this->loadTexture("inGameBackgroundTexture", "assets/textures/inGameBackgroundTexture.png");
+	this->loadTexture("inputMenuBackgroundTexture", "assets/textures/inputMenuBackgroundTexture.png");
+	this->loadTexture("mainMenuBackgroundTexture", "assets/textures/mainMenuBackgroundTexture.png");
+	this->loadTexture("multiplayerMenuBackgroundTexture", "assets/textures/multiplayerMenuBackgroundTexture.png");
+	this->loadTexture("pointingArrowTexture", "assets/textures/pointingArrowTexture.png");
+	this->loadTexture("settingsMenuBackgroundTexture", "assets/textures/settingsMenuBackgroundTexture.png");
 }
 
 GLuint AssetManager::getTexture(const std::string& textureName)
