@@ -17,8 +17,6 @@ private:
 
 	void initializeENet();
 
-	void printGameStatuses();
-
 public:
 	static Game& get();
 	void start();
