@@ -3,14 +3,14 @@
 
 #include "../../InputManager/InputManager.h"
 
-DataBox::DataBox(float centerPosX, float centerPosY, float width, float height, float rotateAngle, const std::string& text, const std::string& textureName, const std::string& initialText)
+DataBox::DataBox(float centerPosX, float centerPosY, float width, float height, float rotateAngle, const std::string& textureName, const std::string& initialText)
 	: Entity(centerPosX, centerPosY, width, height, rotateAngle)
-	, TextEntity(centerPosX, centerPosY, width, height, rotateAngle, text)
+	, TextEntity(centerPosX, centerPosY, width, height, rotateAngle, initialText)
 	, TexturableEntity(centerPosX, centerPosY, width, height, rotateAngle, textureName)
-	, TextOnBackgroundEntity(centerPosX, centerPosY, width, height, rotateAngle, text, textureName)
+	, TextOnBackgroundEntity(centerPosX, centerPosY, width, height, rotateAngle, initialText, textureName)
 	, isSelected(false), initialText(initialText)
 {
-	this->text = this->initialText;
+
 }
 
 DataBox::~DataBox()

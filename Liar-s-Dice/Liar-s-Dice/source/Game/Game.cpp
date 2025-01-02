@@ -9,6 +9,8 @@
 #include "../VisualInterface/MainMenuVisualInterface/MainMenuVisualInterface.h"
 #include "../VisualInterface//SettingsMenuVisualInterface/SettingsMenuVisualInterface.h"
 #include "../VisualInterface/MultiplayerMenuVisualInterface/MultiplayerMenuVisualInterface.h"
+#include "../VisualInterface/CreateGameMenuVisualInterface/CreateGameMenuVisualInterface.h"
+#include "../VisualInterface/JoinGameMenuVisualInterface/JoinGameMenuVisualInterface.h"
 #include "../VisualInterface/InGameVisualInterface/InGameVisualInterface.h"
 
 #include <enet/enet.h>
@@ -50,8 +52,6 @@ void Game::loadResources()
 
 void Game::setStatus(Status status)
 {
-	// TODO: switch dupa status pentru reset la interfete
-
 	if (this->status != status)
 	{
 		switch (status)
@@ -65,8 +65,17 @@ void Game::setStatus(Status status)
 		case Status::IN_MULTIPLAYER_MENU:
 			MultiplayerMenuVisualInterface::get().resetResources();
 			break;
+		case Status::IN_CREATE_GAME_MENU:
+			CreateGameMenuVisualInterface::get().resetResources();
+			break;
+		case Status::IN_JOIN_GAME_MENU:
+			JoinGameMenuVisualInterface::get().resetResources();
+			break;
 		case Status::IN_GAME:
 			InGameVisualInterface::get().resetResources();
+			break;
+		default:
+			std::cout << "Error: Invalid Game Status" << std::endl;
 			break;
 		}
 	}
@@ -91,8 +100,6 @@ void Game::run()
 
 void Game::draw()
 {
-	// TODO: switch dupa status, desenam interfetele
-
 	switch (this->status)
 	{
 	case Status::IN_MAIN_MENU:
@@ -104,16 +111,23 @@ void Game::draw()
 	case Status::IN_MULTIPLAYER_MENU:
 		MultiplayerMenuVisualInterface::get().draw();
 		break;
+	case Status::IN_CREATE_GAME_MENU:
+		CreateGameMenuVisualInterface::get().draw();
+		break;
+	case Status::IN_JOIN_GAME_MENU:
+		JoinGameMenuVisualInterface::get().draw();
+		break;
 	case Status::IN_GAME:
 		InGameVisualInterface::get().draw();
+		break;
+	default:
+		std::cout << "Error: Invalid Game Status" << std::endl;
 		break;
 	}
 }
 
 void Game::update()
 {
-	// TODO: switch dupa status pentru update la interfete
-
 	switch (this->status)
 	{
 	case Status::IN_MAIN_MENU:
@@ -125,8 +139,17 @@ void Game::update()
 	case Status::IN_MULTIPLAYER_MENU:
 		MultiplayerMenuVisualInterface::get().update();
 		break;
+	case Status::IN_CREATE_GAME_MENU:
+		CreateGameMenuVisualInterface::get().update();
+		break;
+	case Status::IN_JOIN_GAME_MENU:
+		JoinGameMenuVisualInterface::get().update();
+		break;
 	case Status::IN_GAME:
 		InGameVisualInterface::get().update();
+		break;
+	default:
+		std::cout << "Error: Invalid Game Status" << std::endl;
 		break;
 	}
 
