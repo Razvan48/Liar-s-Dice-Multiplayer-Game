@@ -27,7 +27,7 @@ private:
 	Game& operator= (const Game&& other) = delete;
 
 	Status status;
-	int EXIT_TIME_MS;
+	const int EXIT_TIME_MS;
 
 	void loadResources();
 	void run();
