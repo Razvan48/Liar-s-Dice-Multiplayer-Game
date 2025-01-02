@@ -67,6 +67,18 @@
     <Filter Include="Source Files\VisualInterface\SettingsMenuVisualInterface">
       <UniqueIdentifier>{5c180251-475d-47a6-b4b3-1c3e2c7c6f9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\VisualInterface\CreateGameMenuVisualInterface">
+      <UniqueIdentifier>{97200e30-b344-4872-a3aa-0d3776ea7707}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualInterface\JoinGameMenuVisualInterface">
+      <UniqueIdentifier>{00286839-f509-41e7-a5de-ebcd12add60d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualInterface\InGameVisualInterface">
+      <UniqueIdentifier>{07ec03f2-7ab5-4e9d-874f-5c7869dc25ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualInterface\MultiplayerMenuVisualInterface">
+      <UniqueIdentifier>{b3ef61bd-b201-4864-9263-2a3183957ed0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -126,6 +138,18 @@
     <ClCompile Include="source\VisualInterface\SettingsMenuVisualInterface\SettingsMenuVisualInterface.cpp">
       <Filter>Source Files\VisualInterface\SettingsMenuVisualInterface</Filter>
     </ClCompile>
+    <ClCompile Include="source\VisualInterface\CreateGameMenuVisualInterface\CreateGameMenuVisualInterface.cpp">
+      <Filter>Source Files\VisualInterface\CreateGameMenuVisualInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisualInterface\JoinGameMenuVisualInterface\JoinGameMenuVisualInterface.cpp">
+      <Filter>Source Files\VisualInterface\JoinGameMenuVisualInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisualInterface\InGameVisualInterface\InGameVisualInterface.cpp">
+      <Filter>Source Files\VisualInterface\InGameVisualInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisualInterface\MultiplayerMenuVisualInterface\MultiplayerMenuVisualInterface.cpp">
+      <Filter>Source Files\VisualInterface\MultiplayerMenuVisualInterface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GlobalClock\GlobalClock.h">
@@ -181,6 +205,18 @@
     </ClInclude>
     <ClInclude Include="source\VisualInterface\SettingsMenuVisualInterface\SettingsMenuVisualInterface.h">
       <Filter>Source Files\VisualInterface\SettingsMenuVisualInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\CreateGameMenuVisualInterface\CreateGameMenuVisualInterface.h">
+      <Filter>Source Files\VisualInterface\CreateGameMenuVisualInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\JoinGameMenuVisualInterface\JoinGameMenuVisualInterface.h">
+      <Filter>Source Files\VisualInterface\JoinGameMenuVisualInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\InGameVisualInterface\InGameVisualInterface.h">
+      <Filter>Source Files\VisualInterface\InGameVisualInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\MultiplayerMenuVisualInterface\MultiplayerMenuVisualInterface.h">
+      <Filter>Source Files\VisualInterface\MultiplayerMenuVisualInterface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
