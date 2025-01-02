@@ -80,6 +80,9 @@ void Game::setStatus(Status status)
 		case Status::IN_GAME:
 			InGameVisualInterface::get().resetResources();
 			break;
+		case Status::EXITING:
+			std::cout << "Exiting..." << std::endl;
+			break;
 		default:
 			std::cout << "Error: Invalid Game Status" << std::endl;
 			break;
@@ -96,8 +99,8 @@ void Game::run()
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		this->update();
 		this->draw();
+		this->update();
 
 		glfwSwapBuffers(WindowManager::get().getWindow());
 		glfwPollEvents();
@@ -129,6 +132,9 @@ void Game::draw()
 	case Status::IN_GAME:
 		InGameVisualInterface::get().draw();
 		break;
+	case Status::EXITING:
+		std::cout << "Exiting..." << std::endl;
+		break;
 	default:
 		std::cout << "Error: Invalid Game Status" << std::endl;
 		break;
@@ -159,6 +165,9 @@ void Game::update()
 		break;
 	case Status::IN_GAME:
 		InGameVisualInterface::get().update();
+		break;
+	case Status::EXITING:
+		std::cout << "Exiting..." << std::endl;
 		break;
 	default:
 		std::cout << "Error: Invalid Game Status" << std::endl;
