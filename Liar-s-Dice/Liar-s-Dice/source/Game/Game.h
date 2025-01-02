@@ -39,6 +39,6 @@ public:
 	void start();
 
 	inline Status getStatus() const { return this->status; }
-	inline void setStatus(Status status) { this->status = status; }
+	void setStatus(Status status);
 };
 

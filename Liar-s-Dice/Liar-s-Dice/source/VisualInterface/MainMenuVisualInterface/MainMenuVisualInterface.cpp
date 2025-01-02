@@ -5,10 +5,32 @@
 #include "../../WindowManager/WindowManager.h"
 
 MainMenuVisualInterface::MainMenuVisualInterface()
-	: backgroundEntity(WindowManager::get().getWindowWidth() / 2.0f, WindowManager::get().getWindowHeight() / 2.0f, WindowManager::get().getWindowWidth(), WindowManager::get().getWindowHeight(), 0.0f, "mainMenuBackgroundTexture")
-	, multiplayerButton(WindowManager::get().getWindowWidth() / 2.0f, WindowManager::get().getWindowHeight() / 3.0f, WindowManager::get().getWindowWidth() / 3.0f, WindowManager::get().getWindowHeight() / 7.5f, 0.0f, "Multiplayer", "buttonTexture", "buttonPressedSound", "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f), "buttonHoveredSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
-	, settingsButton(WindowManager::get().getWindowWidth() / 2.0f, WindowManager::get().getWindowHeight() / 6.0f, WindowManager::get().getWindowWidth() / 3.0f, WindowManager::get().getWindowHeight() / 7.5f, 0.0f, "Settings", "buttonTexture", "buttonPressedSound", "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f), "buttonHoveredSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
-	, exitButton(WindowManager::get().getWindowWidth() / 10.0f, WindowManager::get().getWindowHeight() / 15.0f, WindowManager::get().getWindowWidth() / 8.0f, WindowManager::get().getWindowHeight() / 12.0f, 0.0f, "Exit", "buttonTexture", "buttonPressedSound", "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f), "buttonHoveredSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
+	: backgroundEntity(	WindowManager::get().getWindowWidth() / 2.0f
+						, WindowManager::get().getWindowHeight() / 2.0f
+						, WindowManager::get().getWindowWidth()
+						, WindowManager::get().getWindowHeight(), 0.0f
+						, "mainMenuBackgroundTexture")
+	, multiplayerButton(	WindowManager::get().getWindowWidth() / 2.0f
+							, WindowManager::get().getWindowHeight() / 3.0f
+							, WindowManager::get().getWindowWidth() / 3.0f
+							, WindowManager::get().getWindowHeight() / 7.5f, 0.0f
+							, "Multiplayer", "buttonTexture", "pressedButtonSound", "hoveredButtonTexture"
+							, glm::vec3(1.0f, 1.0f, 1.0f), "hoveredButtonSound", "inactiveButtonTexture"
+							, glm::vec3(0.5f, 0.5f, 0.5f))
+	, settingsButton(	WindowManager::get().getWindowWidth() / 2.0f
+						, WindowManager::get().getWindowHeight() / 6.0f
+						, WindowManager::get().getWindowWidth() / 3.0f
+						, WindowManager::get().getWindowHeight() / 7.5f, 0.0f
+						, "Settings", "buttonTexture", "pressedButtonSound", "hoveredButtonTexture"
+						, glm::vec3(1.0f, 1.0f, 1.0f), "hoveredButtonSound", "inactiveButtonTexture"
+						, glm::vec3(0.5f, 0.5f, 0.5f))
+	, exitButton(	WindowManager::get().getWindowWidth() / 10.0f
+					, WindowManager::get().getWindowHeight() / 15.0f
+					, WindowManager::get().getWindowWidth() / 8.0f
+					, WindowManager::get().getWindowHeight() / 12.0f, 0.0f
+					, "Exit", "buttonTexture", "pressedButtonSound", "hoveredButtonTexture"
+					, glm::vec3(1.0f, 1.0f, 1.0f), "hoveredButtonSound", "inactiveButtonTexture"
+					, glm::vec3(0.5f, 0.5f, 0.5f))
 {
 
 }

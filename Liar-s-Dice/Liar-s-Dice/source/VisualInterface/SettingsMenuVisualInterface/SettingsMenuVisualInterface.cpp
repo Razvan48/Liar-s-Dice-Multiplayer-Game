@@ -7,11 +7,36 @@
 #include "../../AssetManager/AssetManager.h"
 
 SettingsMenuVisualInterface::SettingsMenuVisualInterface()
-	: backgroundEntity(WindowManager::get().getWindowWidth() / 2.0f, WindowManager::get().getWindowHeight() / 2.0f, WindowManager::get().getWindowWidth(), WindowManager::get().getWindowHeight(), 0.0f, "settingsMenuBackgroundTexture")
-	, soundOnOffTextEntity(WindowManager::get().getWindowWidth() / 2.0f, WindowManager::get().getWindowHeight() / 2.0f, WindowManager::get().getWindowWidth() / 3.0f, WindowManager::get().getWindowHeight() / 7.5f, 0.0f, "Sound: ERROR")
-	, soundOnButton(WindowManager::get().getWindowWidth() / 2.0f, WindowManager::get().getWindowHeight() / 3.0f, WindowManager::get().getWindowWidth() / 3.0f, WindowManager::get().getWindowHeight() / 7.5f, 0.0f, "Sound: ON", "buttonTexture", "buttonPressedSound", "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f), "buttonHoveredSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
-	, soundOffButton(WindowManager::get().getWindowWidth() / 2.0f, WindowManager::get().getWindowHeight() / 6.0f, WindowManager::get().getWindowWidth() / 3.0f, WindowManager::get().getWindowHeight() / 7.5f, 0.0f, "Sound: OFF", "buttonTexture", "buttonPressedSound", "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f), "buttonHoveredSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
-	, backButton(WindowManager::get().getWindowWidth() / 10.0f, WindowManager::get().getWindowHeight() / 15.0f, WindowManager::get().getWindowWidth() / 8.0f, WindowManager::get().getWindowHeight() / 12.0f, 0.0f, "Back", "buttonTexture", "buttonPressedSound", "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f), "buttonHoveredSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
+	: backgroundEntity(	WindowManager::get().getWindowWidth() / 2.0f
+						, WindowManager::get().getWindowHeight() / 2.0f
+						, WindowManager::get().getWindowWidth()
+						, WindowManager::get().getWindowHeight()
+						, 0.0f, "settingsMenuBackgroundTexture")
+	, soundOnOffTextEntity(	WindowManager::get().getWindowWidth() / 2.0f
+							, WindowManager::get().getWindowHeight() / 2.0f
+							, WindowManager::get().getWindowWidth() / 3.0f
+							, WindowManager::get().getWindowHeight() / 7.5f, 0.0f, "Sound: ERROR")
+	, soundOnButton(	WindowManager::get().getWindowWidth() / 2.0f
+						, WindowManager::get().getWindowHeight() / 3.0f
+						, WindowManager::get().getWindowWidth() / 3.0f
+						, WindowManager::get().getWindowHeight() / 7.5f
+						, 0.0f, "Sound: ON", "buttonTexture", "pressedButtonSound"
+						, "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f)
+						, "hoveredButtonSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
+	, soundOffButton(	WindowManager::get().getWindowWidth() / 2.0f
+						, WindowManager::get().getWindowHeight() / 6.0f
+						, WindowManager::get().getWindowWidth() / 3.0f
+						, WindowManager::get().getWindowHeight() / 7.5f
+						, 0.0f, "Sound: OFF", "buttonTexture", "pressedButtonSound"
+						, "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f), "hoveredButtonSound"
+						, "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
+	, backButton(	WindowManager::get().getWindowWidth() / 10.0f
+					, WindowManager::get().getWindowHeight() / 15.0f
+					, WindowManager::get().getWindowWidth() / 8.0f
+					, WindowManager::get().getWindowHeight() / 12.0f
+					, 0.0f, "Back", "buttonTexture", "pressedButtonSound"
+					, "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f)
+					, "hoveredButtonSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
 {
 	if (AssetManager::get().getSoundEnabled())
 	{
@@ -65,7 +90,7 @@ void SettingsMenuVisualInterface::update()
 
 	this->backButton.update();
 
-	if (this->soundOnButton.anInteractionWillHappen())
+	if (this->soundOnButton.anInteractionWillHappen() && this->soundOnButton.getStatus() != Button::Status::INACTIVE)
 	{
 		this->soundOnOffTextEntity.setColor(glm::vec3(0.0f, 1.0f, 0.0f));
 		this->soundOnOffTextEntity.setText("Sound: ON");
@@ -74,7 +99,7 @@ void SettingsMenuVisualInterface::update()
 		this->soundOnButton.setStatus(Button::Status::INACTIVE);
 		this->soundOffButton.setStatus(Button::Status::RELEASED);
 	}
-	else if (this->soundOffButton.anInteractionWillHappen())
+	else if (this->soundOffButton.anInteractionWillHappen() && this->soundOffButton.getStatus() != Button::Status::INACTIVE)
 	{
 		this->soundOnOffTextEntity.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
 		this->soundOnOffTextEntity.setText("Sound: OFF");

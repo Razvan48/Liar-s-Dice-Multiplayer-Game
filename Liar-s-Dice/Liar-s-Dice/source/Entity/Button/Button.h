@@ -35,5 +35,6 @@ public:
 	virtual void update() override;
 
 	inline void setStatus(Button::Status status) { this->status = status; }
+	inline Button::Status getStatus() const { return this->status; }
 };
 

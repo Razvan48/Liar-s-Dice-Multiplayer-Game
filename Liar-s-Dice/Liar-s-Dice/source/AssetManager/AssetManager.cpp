@@ -140,15 +140,16 @@ void AssetManager::loadResources()
 	this->loadSound("boardStart0Sound", "assets/sounds/boardStart0Sound.mp3");
 	this->loadSound("boardStart1Sound", "assets/sounds/boardStart1Sound.mp3");
 
-	this->loadSound("buttonHoveredSound", "assets/sounds/buttonHoveredSound.mp3");
-	this->loadSound("buttonPressedSound", "assets/sounds/buttonPressedSound.mp3");
-
 	this->loadSound("dice0Sound", "assets/sounds/dice0Sound.mp3");
 	this->loadSound("dice1Sound", "assets/sounds/dice1Sound.mp3");
 
 	this->loadSound("errorSound", "assets/sounds/errorSound.mp3");
 
+	this->loadSound("hoveredButtonSound", "assets/sounds/hoveredButtonSound.mp3");
+
 	this->loadSound("lose0Sound", "assets/sounds/lose0Sound.mp3");
+
+	this->loadSound("pressedButtonSound", "assets/sounds/pressedButtonSound.mp3");
 
 	this->loadSound("win0Sound", "assets/sounds/win0Sound.mp3");
 	this->loadSound("win1Sound", "assets/sounds/win1Sound.mp3");

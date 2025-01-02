@@ -46,6 +46,26 @@ void Game::loadResources()
 	this->initializeENet(); // Enet
 }
 
+void Game::setStatus(Status status)
+{
+	// TODO: switch dupa status pentru reset la interfete
+
+	if (this->status != status)
+	{
+		switch (status)
+		{
+		case Status::IN_MAIN_MENU:
+			MainMenuVisualInterface::get().resetResources();
+			break;
+		case Status::IN_SETTINGS_MENU:
+			SettingsMenuVisualInterface::get().resetResources();
+			break;
+		}
+	}
+
+	this->status = status;
+}
+
 void Game::run()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -64,6 +84,7 @@ void Game::run()
 void Game::draw()
 {
 	// TODO: switch dupa status, desenam interfetele
+
 	switch (this->status)
 	{
 	case Status::IN_MAIN_MENU:
