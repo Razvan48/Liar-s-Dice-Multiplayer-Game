@@ -24,6 +24,8 @@ protected:
 	std::string textureNameWhenInactive;
 	glm::vec3 colorWhenInactive;
 
+	std::string originalText;
+
 public:
 	Button(float centerPosX, float centerPosY, float width, float height, float rotateAngle, const std::string& text, const std::string& textureName
 		, const std::string& soundNameWhenPressed, const std::string& textureNameWhenHovered, const glm::vec3& colorWhenHovered, const std::string& soundNameWhenHovered, const std::string& textureNameWhenInactive, const glm::vec3& colorWhenInactive);

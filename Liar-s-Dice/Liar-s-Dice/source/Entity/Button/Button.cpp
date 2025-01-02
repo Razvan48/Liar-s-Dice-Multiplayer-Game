@@ -15,6 +15,7 @@ Button::Button(float centerPosX, float centerPosY, float width, float height, fl
 	, textureNameWhenHovered(textureNameWhenHovered), colorWhenHovered(colorWhenHovered)
 	, soundNameWhenHovered(soundNameWhenHovered)
 	, textureNameWhenInactive(textureNameWhenInactive), colorWhenInactive(colorWhenInactive)
+	, originalText(text)
 {
 
 }
@@ -108,20 +109,16 @@ void Button::update()
 		else
 		{
 			if (this->status == Button::Status::RELEASED)
-			{
 				AssetManager::get().playSound(this->soundNameWhenHovered, false, false);
-				this->text.push_back('<');
-			}
 			this->status = Button::Status::HOVERED;
 		}
 	}
 	else
-	{
-		if (this->status == Button::Status::HOVERED)
-		{
-			this->text.pop_back();
-		}
 		this->status = Button::Status::RELEASED;
-	}
+
+	if (this->status == Button::Status::HOVERED)
+		this->text = ">" + this->originalText;
+	else
+		this->text = this->originalText;
 }
 
