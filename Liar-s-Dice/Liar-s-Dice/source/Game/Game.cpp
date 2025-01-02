@@ -9,6 +9,7 @@
 #include "../VisualInterface/MainMenuVisualInterface/MainMenuVisualInterface.h"
 #include "../VisualInterface//SettingsMenuVisualInterface/SettingsMenuVisualInterface.h"
 #include "../VisualInterface/MultiplayerMenuVisualInterface/MultiplayerMenuVisualInterface.h"
+#include "../VisualInterface/InGameVisualInterface/InGameVisualInterface.h"
 
 #include <enet/enet.h>
 
@@ -64,10 +65,13 @@ void Game::setStatus(Status status)
 		case Status::IN_MULTIPLAYER_MENU:
 			MultiplayerMenuVisualInterface::get().resetResources();
 			break;
+		case Status::IN_GAME:
+			InGameVisualInterface::get().resetResources();
+			break;
 		}
 	}
 
-	this->status = status;
+	this->status = status; // Trebuie aici, deoarece in resetResources() se poate folosi status-ul curent.
 }
 
 void Game::run()
@@ -100,6 +104,9 @@ void Game::draw()
 	case Status::IN_MULTIPLAYER_MENU:
 		MultiplayerMenuVisualInterface::get().draw();
 		break;
+	case Status::IN_GAME:
+		InGameVisualInterface::get().draw();
+		break;
 	}
 }
 
@@ -117,6 +124,9 @@ void Game::update()
 		break;
 	case Status::IN_MULTIPLAYER_MENU:
 		MultiplayerMenuVisualInterface::get().update();
+		break;
+	case Status::IN_GAME:
+		InGameVisualInterface::get().update();
 		break;
 	}
 
