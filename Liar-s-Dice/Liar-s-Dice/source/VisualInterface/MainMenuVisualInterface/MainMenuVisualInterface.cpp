@@ -11,17 +11,24 @@ MainMenuVisualInterface::MainMenuVisualInterface()
 						, WindowManager::get().getWindowHeight(), 0.0f
 						, "mainMenuBackgroundTexture")
 	, multiplayerButton(	WindowManager::get().getWindowWidth() / 2.0f
-							, WindowManager::get().getWindowHeight() / 3.0f
+							, WindowManager::get().getWindowHeight() / 2.7f
 							, WindowManager::get().getWindowWidth() / 3.0f
-							, WindowManager::get().getWindowHeight() / 7.5f, 0.0f
+							, WindowManager::get().getWindowHeight() / 10.0f, 0.0f
 							, "Multiplayer", "buttonTexture", "pressedButtonSound", "hoveredButtonTexture"
 							, glm::vec3(1.0f, 1.0f, 1.0f), "hoveredButtonSound", "inactiveButtonTexture"
 							, glm::vec3(0.5f, 0.5f, 0.5f))
 	, settingsButton(	WindowManager::get().getWindowWidth() / 2.0f
-						, WindowManager::get().getWindowHeight() / 6.0f
+						, WindowManager::get().getWindowHeight() / 4.0f
 						, WindowManager::get().getWindowWidth() / 3.0f
-						, WindowManager::get().getWindowHeight() / 7.5f, 0.0f
+						, WindowManager::get().getWindowHeight() / 10.0f, 0.0f
 						, "Settings", "buttonTexture", "pressedButtonSound", "hoveredButtonTexture"
+						, glm::vec3(1.0f, 1.0f, 1.0f), "hoveredButtonSound", "inactiveButtonTexture"
+						, glm::vec3(0.5f, 0.5f, 0.5f))
+	, creditsButton(	WindowManager::get().getWindowWidth() / 2.0f
+						, WindowManager::get().getWindowHeight() / 8.0f
+						, WindowManager::get().getWindowWidth() / 5.0f
+						, WindowManager::get().getWindowHeight() / 10.0f, 0.0f
+						, "Credits", "buttonTexture", "pressedButtonSound", "hoveredButtonTexture"
 						, glm::vec3(1.0f, 1.0f, 1.0f), "hoveredButtonSound", "inactiveButtonTexture"
 						, glm::vec3(0.5f, 0.5f, 0.5f))
 	, exitButton(	WindowManager::get().getWindowWidth() / 10.0f
@@ -52,6 +59,8 @@ void MainMenuVisualInterface::draw()
 
 	this->multiplayerButton.draw();
 	this->settingsButton.draw();
+	this->creditsButton.draw();
+
 	this->exitButton.draw();
 }
 
@@ -61,12 +70,16 @@ void MainMenuVisualInterface::update()
 
 	this->multiplayerButton.update();
 	this->settingsButton.update();
+	this->creditsButton.update();
+
 	this->exitButton.update();
 
 	if (this->multiplayerButton.anInteractionWillHappen())
 		Game::get().setStatus(Game::Status::IN_MULTIPLAYER_MENU);
 	else if (this->settingsButton.anInteractionWillHappen())
 		Game::get().setStatus(Game::Status::IN_SETTINGS_MENU);
+	else if (this->creditsButton.anInteractionWillHappen())
+		Game::get().setStatus(Game::Status::IN_CREDITS_MENU);
 	else if (this->exitButton.anInteractionWillHappen())
 		Game::get().setStatus(Game::Status::EXITING);
 }

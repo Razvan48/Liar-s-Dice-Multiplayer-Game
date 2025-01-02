@@ -19,6 +19,7 @@ protected:
 	TexturableEntity backgroundEntity;
 	Button multiplayerButton;
 	Button settingsButton;
+	Button creditsButton;
 	Button exitButton;
 
 public:

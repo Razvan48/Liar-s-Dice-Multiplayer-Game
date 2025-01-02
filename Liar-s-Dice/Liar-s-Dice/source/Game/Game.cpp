@@ -12,6 +12,7 @@
 #include "../VisualInterface/CreateGameMenuVisualInterface/CreateGameMenuVisualInterface.h"
 #include "../VisualInterface/JoinGameMenuVisualInterface/JoinGameMenuVisualInterface.h"
 #include "../VisualInterface/InGameVisualInterface/InGameVisualInterface.h"
+#include "../VisualInterface/CreditsMenuVisualInterface/CreditsMenuVisualInterface.h"
 
 #include <enet/enet.h>
 
@@ -62,6 +63,9 @@ void Game::setStatus(Status status)
 		case Status::IN_SETTINGS_MENU:
 			SettingsMenuVisualInterface::get().resetResources();
 			break;
+		case Status::IN_CREDITS_MENU:
+			CreditsMenuVisualInterface::get().resetResources();
+			break;
 		case Status::IN_MULTIPLAYER_MENU:
 			MultiplayerMenuVisualInterface::get().resetResources();
 			break;
@@ -108,6 +112,9 @@ void Game::draw()
 	case Status::IN_SETTINGS_MENU:
 		SettingsMenuVisualInterface::get().draw();
 		break;
+	case Status::IN_CREDITS_MENU:
+		CreditsMenuVisualInterface::get().draw();
+		break;
 	case Status::IN_MULTIPLAYER_MENU:
 		MultiplayerMenuVisualInterface::get().draw();
 		break;
@@ -135,6 +142,9 @@ void Game::update()
 		break;
 	case Status::IN_SETTINGS_MENU:
 		SettingsMenuVisualInterface::get().update();
+		break;
+	case Status::IN_CREDITS_MENU:
+		CreditsMenuVisualInterface::get().update();
 		break;
 	case Status::IN_MULTIPLAYER_MENU:
 		MultiplayerMenuVisualInterface::get().update();

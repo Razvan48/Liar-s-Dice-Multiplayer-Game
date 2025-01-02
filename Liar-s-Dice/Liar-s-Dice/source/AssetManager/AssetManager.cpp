@@ -158,6 +158,9 @@ void AssetManager::loadResources()
 
 	this->loadTexture("arrowTexture", "assets/textures/arrowTexture.png");
 	this->loadTexture("buttonTexture", "assets/textures/buttonTexture.png");
+
+	this->loadTexture("creditsMenuBackgroundTexture", "assets/textures/creditsMenuBackgroundTexture.png");
+
 	this->loadTexture("cupTexture", "assets/textures/cupTexture.png");
 	this->loadTexture("dataBoxTexture", "assets/textures/dataBoxTexture.png");
 

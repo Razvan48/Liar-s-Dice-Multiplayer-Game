@@ -14,24 +14,24 @@ CreateGameMenuVisualInterface::CreateGameMenuVisualInterface()
 		, 0.0f, "inputMenuBackgroundTexture")
 	, usernameTextEntity(WindowManager::get().getWindowWidth() / 5.0f
 		, WindowManager::get().getWindowHeight() / 2.0f
-		, WindowManager::get().getWindowWidth() / 6.0f
-		, WindowManager::get().getWindowHeight() / 7.5f, 0.0f, "Username:")
-	, usernameDataBox(WindowManager::get().getWindowWidth() / 2.0f
+		, WindowManager::get().getWindowWidth() / 2.5f
+		, WindowManager::get().getWindowHeight() / 10.0f, 0.0f, "Username:")
+	, usernameDataBox(WindowManager::get().getWindowWidth() / 1.5f
 		, WindowManager::get().getWindowHeight() / 2.0f
-		, WindowManager::get().getWindowWidth() / 2.0f
-		, WindowManager::get().getWindowHeight() / 6.0f
+		, WindowManager::get().getWindowWidth() / 1.75f
+		, WindowManager::get().getWindowHeight() / 10.0f
 		, 0.0f, "dataBoxTexture", "username")
 	, createGameButton(9.0f * WindowManager::get().getWindowWidth() / 10.0f
+		, WindowManager::get().getWindowHeight() / 15.0f
+		, WindowManager::get().getWindowWidth() / 5.5f
 		, WindowManager::get().getWindowHeight() / 10.0f
-		, WindowManager::get().getWindowWidth() / 2.0f
-		, WindowManager::get().getWindowHeight() / 5.0f
 		, 0.0f, "Create Game", "buttonTexture", "pressedButtonSound"
 		, "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f)
 		, "hoveredButtonSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
 	, backButton(WindowManager::get().getWindowWidth() / 10.0f
 		, WindowManager::get().getWindowHeight() / 15.0f
-		, WindowManager::get().getWindowWidth() / 8.0f
-		, WindowManager::get().getWindowHeight() / 12.0f
+		, WindowManager::get().getWindowWidth() / 5.5f
+		, WindowManager::get().getWindowHeight() / 10.0f
 		, 0.0f, "Back", "buttonTexture", "pressedButtonSound"
 		, "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f)
 		, "hoveredButtonSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))

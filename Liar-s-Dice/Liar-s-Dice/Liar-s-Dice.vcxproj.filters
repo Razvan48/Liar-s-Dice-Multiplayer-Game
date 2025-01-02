@@ -79,6 +79,9 @@
     <Filter Include="Source Files\VisualInterface\MultiplayerMenuVisualInterface">
       <UniqueIdentifier>{b3ef61bd-b201-4864-9263-2a3183957ed0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\VisualInterface\CreditsMenuVisualInterface">
+      <UniqueIdentifier>{284ea879-39d8-42ba-a3e0-9f4c388626d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -150,6 +153,9 @@
     <ClCompile Include="source\VisualInterface\MultiplayerMenuVisualInterface\MultiplayerMenuVisualInterface.cpp">
       <Filter>Source Files\VisualInterface\MultiplayerMenuVisualInterface</Filter>
     </ClCompile>
+    <ClCompile Include="source\VisualInterface\CreditsMenuVisualInterface\CreditsMenuVisualInterface.cpp">
+      <Filter>Source Files\VisualInterface\CreditsMenuVisualInterface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GlobalClock\GlobalClock.h">
@@ -217,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="source\VisualInterface\MultiplayerMenuVisualInterface\MultiplayerMenuVisualInterface.h">
       <Filter>Source Files\VisualInterface\MultiplayerMenuVisualInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisualInterface\CreditsMenuVisualInterface\CreditsMenuVisualInterface.h">
+      <Filter>Source Files\VisualInterface\CreditsMenuVisualInterface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
