@@ -95,11 +95,44 @@ void JoinGameMenuVisualInterface::update()
 		// aici pot face verificari pe numele de utilizator
 
 		bool fullAddressOk = true;
+		int semiColonPos = -1;
 
-		// TODO: aici pot face verificari pe adresa completa
+		for (int i = 0; i < this->fullAddressDataBox.getText().size(); ++i)
+		{
+			if (this->fullAddressDataBox.getText()[i] == ':')
+			{
+				if (semiColonPos != -1)
+				{
+					fullAddressOk = false;
+					break;
+				}
+				semiColonPos = i;
+			}
+			else if (!(
+				('0' <= this->fullAddressDataBox.getText()[i] && this->fullAddressDataBox.getText()[i] <= '9')
+				||
+				('a' <= this->fullAddressDataBox.getText()[i] && this->fullAddressDataBox.getText()[i] <= 'z')
+				))
+				fullAddressOk = false;
+		}
+		if (semiColonPos == -1)
+			fullAddressOk = false;
 
 		if (userNameOk && fullAddressOk)
+		{
+			std::string username = this->usernameDataBox.getText();
+
+			std::string address = "";
+			for (int i = 0; i < semiColonPos; ++i)
+				address.push_back(this->fullAddressDataBox.getText()[i]);
+			std::string port = "";
+			for (int i = semiColonPos + 1; i < this->fullAddressDataBox.getText().size(); ++i)
+				port.push_back(this->fullAddressDataBox.getText()[i]);
+
+			// TODO: de trimis datele de mai sus catre client apoi
+
 			Game::get().setStatus(Game::Status::IN_GAME);
+		}
 		else
 		{
 			if (!userNameOk)

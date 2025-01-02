@@ -80,7 +80,13 @@ void CreateGameMenuVisualInterface::update()
 		// aici pot face verificari pe numele de utilizator
 
 		if (userNameOk)
+		{
+			std::string username = this->usernameDataBox.getText();
+
+			// TODO: de trimis datele de mai sus catre server apoi
+
 			Game::get().setStatus(Game::Status::IN_GAME);
+		}
 		else
 		{
 			this->usernameTextEntity.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
