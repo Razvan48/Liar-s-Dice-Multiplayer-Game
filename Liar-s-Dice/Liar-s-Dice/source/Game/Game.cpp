@@ -17,9 +17,11 @@
 #include <enet/enet.h>
 
 #include <iostream>
+#include <thread>
 
 Game::Game()
 	: status(Status::IN_MAIN_MENU)
+	, EXIT_TIME_MS(1000)
 {
 
 }
@@ -163,13 +165,14 @@ void Game::update()
 		break;
 	}
 
-	if (this->status == Status::EXITING)
-	{
-		glfwSetWindowShouldClose(WindowManager::get().getWindow(), GLFW_TRUE);
-	}
-	else if (InputManager::get().isKeyReleased(GLFW_KEY_ESCAPE))
+	if (InputManager::get().isKeyReleased(GLFW_KEY_ESCAPE))
 	{
 		this->status = Status::EXITING;
+	}
+	else if (this->status == Status::EXITING)
+	{
+		glfwSetWindowShouldClose(WindowManager::get().getWindow(), GLFW_TRUE);
+		std::this_thread::sleep_for(std::chrono::milliseconds(this->EXIT_TIME_MS));
 	}
 
 	InputManager::get().update(); // Trebuie sa fie ultimul update, deoarece curata ce butoane s-au apasat.
