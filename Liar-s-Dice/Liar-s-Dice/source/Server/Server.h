@@ -1,32 +1,31 @@
 #pragma once
 
 #include <enet/enet.h>
+
 #include <string>
+#include <vector>
 #include <map>
 
 class Server
 {
-private:
-	struct ClientData
+public:
+	struct User
 	{
 		ENetPeer* peer;
-		std::string clientName;
-		float lastTimeSentPing;
-		float lastTimeReceivedPing;
-		bool workingConnection;
+		std::string username;
+		float lastTimeSentPingToServer;
 
-		ClientData()
+		bool hasToSendName;
+
+		User()
 			: peer(nullptr)
-			, clientName("")
-			, lastTimeSentPing(0.0f)
-			, lastTimeReceivedPing(0.0f)
-			, workingConnection(false)
+			, username("")
+			, lastTimeSentPingToServer(0.0f)
+
+			, hasToSendName(true)
 		{
 
 		}
-
-		void sendMessage(const std::string& messageToSend, bool& failedToSendMessage);
-		void sendMessageUnsafe(const std::string& messageToSend);
 	};
 
 private:
@@ -39,26 +38,28 @@ private:
 	const int MINIMUM_PORT;
 	const int MAXIMUM_PORT;
 
+	bool succesfullyCreated;
+	float lastTimeTriedCreation;
 	const float RETRY_CREATION_DELTA_TIME;
 
 	const float MAXIMUM_TIME_BEFORE_DECLARING_CONNECTION_LOST;
 
-	std::map<std::string, ClientData> connectedClients;
+	std::map<std::string, int> usernameFrequency;
+	std::vector<User> users;
 
-	// Atentie aici la unicitatea cheii
-	inline std::string getClientKey(const ENetAddress& address) const { return std::to_string(address.host) + ":" + std::to_string(address.port); }
+	const int NUM_DICES_PER_USER;
 
+	std::string allocateNewName(const std::string& initialName);
 	void handlePacket(const ENetEvent& eNetEvent);
 
 public:
-	Server();
+	Server(int numDicesPerUser);
 	~Server();
 
-	static Server& get();
+	void sendMessage(const User& user, const std::string& messageToSend, bool& failedToSendMessage) const;
+	void sendMessageUnsafe(const User& user, const std::string& messageToSend) const;
 
-	void start();
 	void update();
-	void stop();
 
 	enet_uint16 getPort() const { return this->address.port; }
 };

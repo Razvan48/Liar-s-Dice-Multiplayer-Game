@@ -6,14 +6,16 @@
 
 #include <iostream>
 
-Client::Client(const std::string& serverIP, enet_uint16 serverPort, const std::string& clientName)
+Client::Client(const std::string& serverIP, enet_uint16 serverPort, const std::string& username)
 	: MAX_NUM_SERVERS(1), NUM_CHANNELS(1), TIME_WAITING_FOR_EVENTS_MS(0)
 	, serverPeer(nullptr), client(nullptr), serverAddress()
+	, lastTimeTriedConnection(0.0f)
 	, RETRY_CONNECTION_DELTA_TIME(1.0f)
+	, isConnected(false)
 	, TIME_BETWEEN_PINGS(1.0f)
 	, lastTimeSentPing(0.0f)
-	, clientName(clientName)
-	, hasToSendName(true)
+	, username(username)
+	, hasToSendInitialName(true)
 {
 	this->client = enet_host_create(NULL, this->MAX_NUM_SERVERS, this->NUM_CHANNELS, 0, 0); // 0, 0 inseamna fara limite la latimea de banda
 	if (client == NULL)
@@ -24,25 +26,7 @@ Client::Client(const std::string& serverIP, enet_uint16 serverPort, const std::s
 	enet_address_set_host(&this->serverAddress, serverIP.c_str());
 	this->serverAddress.port = serverPort;
 
-	std::cout << "Client " << this->clientName << " initialized with : " << this->serverAddress.host << ' ' << this->serverAddress.port << std::endl;
-
-	bool connectedToServer = false;
-	float lastTimeTriedConnectingToServer = 0.0f;
-	while (!connectedToServer)
-	{
-		if (GlobalClock::get().getCurrentTime() - lastTimeTriedConnectingToServer > this->RETRY_CONNECTION_DELTA_TIME)
-		{
-			lastTimeTriedConnectingToServer = GlobalClock::get().getCurrentTime();
-			this->serverPeer = enet_host_connect(this->client, &this->serverAddress, this->NUM_CHANNELS, 0); // 0 = nu trimitem nimic
-			if (this->serverPeer == NULL)
-				std::cout << "Warning: No available peers for initiating an ENet connection (no server available). Retrying..." << std::endl;
-			else
-			{
-				std::cout << "Client " << this->clientName << " connected to server" << std::endl;
-				connectedToServer = true;
-			}
-		}
-	}
+	std::cout << "Client " << this->username << " initialized with : " << this->serverAddress.host << ' ' << this->serverAddress.port << std::endl;
 }
 
 Client::~Client()
@@ -102,7 +86,7 @@ void Client::sendMessageUnsafe(const std::string& messageToSend) const
 
 void Client::handlePacket(const ENetEvent& eNetEvent)
 {
-	std::cout << "In handlePacket in Client named " << this->clientName << std::endl;
+	std::cout << "In handlePacket in Client named " << this->username << std::endl;
 
 	if (eNetEvent.packet->dataLength == 0)
 	{
@@ -111,10 +95,10 @@ void Client::handlePacket(const ENetEvent& eNetEvent)
 	}
 
 
-	// Handling Packet
+	// Rezolvare Pachet
 
 	std::string receivedMessage((char*)eNetEvent.packet->data);
-	std::cout << "Received Message: " << receivedMessage << " from server, size = " << receivedMessage.size() << std::endl;
+	std::cout << "Client received Message: " << receivedMessage << " from server, size = " << receivedMessage.size() << std::endl;
 
 	nlohmann::json receivedMessageJSON = nlohmann::json::parse(receivedMessage);
 
@@ -125,19 +109,39 @@ void Client::handlePacket(const ENetEvent& eNetEvent)
 
 void Client::update()
 {
+	if (!this->isConnected)
+	{
+		if (GlobalClock::get().getCurrentTime() - this->lastTimeTriedConnection > this->RETRY_CONNECTION_DELTA_TIME)
+		{
+			this->lastTimeTriedConnection = GlobalClock::get().getCurrentTime();
+			this->serverPeer = enet_host_connect(this->client, &this->serverAddress, this->NUM_CHANNELS, 0); // 0 = nu trimitem nimic
+			if (this->serverPeer == NULL)
+				std::cout << "Warning: No available peers for initiating an ENet connection (no server available). Retrying..." << std::endl;
+			else
+			{
+				std::cout << "Client " << this->username << " connected to server" << std::endl;
+				this->isConnected = true;
+			}
+		}
+
+		return;
+	}
+
 	// Trimitem ce informatii vitale stim deja catre server.
-	if (this->hasToSendName)
+	if (this->hasToSendInitialName)
 	{
 		nlohmann::json messageToSendJSON;
-		messageToSendJSON["name"] = this->clientName;
-		this->sendMessage(messageToSendJSON.dump(), this->hasToSendName, this->lastTimeSentPing);
+		messageToSendJSON["initialName"] = this->username;
+		this->sendMessage(messageToSendJSON.dump(), this->hasToSendInitialName, this->lastTimeSentPing);
+
+		return;
 	}
 
 	// Vedem ce pachete am primit.
 	// code = 0 inseamna ca nu a fost niciun eveniment
 	ENetEvent eNetEvent;
 	int code = enet_host_service(this->client, &eNetEvent, this->TIME_WAITING_FOR_EVENTS_MS);
-	if (code > 0)
+	while (code > 0)
 	{
 		switch (eNetEvent.type)
 		{
@@ -145,13 +149,15 @@ void Client::update()
 			this->handlePacket(eNetEvent);
 			break;
 		default:
-			std::cout << "Warning: Client " << this->clientName << " received unrecognized event type" << std::endl;
+			std::cout << "Warning: Client " << this->username << " received unrecognized event type" << std::endl;
 			break;
 		}
+
+		code = enet_host_service(this->client, &eNetEvent, this->TIME_WAITING_FOR_EVENTS_MS);
 	}
-	else if (code < 0)
+	if (code < 0)
 	{
-		std::cout << "Error: Client service for client " << this->clientName << " failed" << std::endl;
+		std::cout << "Error: Client service for client " << this->username << " failed" << std::endl;
 	}
 
 	// Apoi trimitem ping-ul catre server.
@@ -159,6 +165,7 @@ void Client::update()
 	{
 		nlohmann::json messageToSendJSON;
 		messageToSendJSON["ping"] = true;
+		messageToSendJSON["name"] = this->username;
 
 		this->sendMessageUnsafe(messageToSendJSON.dump(), this->lastTimeSentPing);
 	}

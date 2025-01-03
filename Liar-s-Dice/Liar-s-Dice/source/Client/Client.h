@@ -14,19 +14,21 @@ private:
 	ENetHost* client;
 	ENetAddress serverAddress;
 
+	float lastTimeTriedConnection;
 	const float RETRY_CONNECTION_DELTA_TIME;
+	bool isConnected;
 
 	const float TIME_BETWEEN_PINGS;
 	float lastTimeSentPing;
 
-	std::string clientName;
+	std::string username;
 
-	bool hasToSendName;
+	bool hasToSendInitialName;
 
 	void handlePacket(const ENetEvent& eNetEvent);
 
 public:
-	Client(const std::string& serverIP, enet_uint16 serverPort, const std::string& clientName);
+	Client(const std::string& serverIP, enet_uint16 serverPort, const std::string& username);
 	~Client();
 
 	void update();

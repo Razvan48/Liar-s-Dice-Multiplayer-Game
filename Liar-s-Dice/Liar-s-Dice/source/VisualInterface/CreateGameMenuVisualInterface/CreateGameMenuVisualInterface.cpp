@@ -6,6 +6,8 @@
 
 #include "../../AssetManager/AssetManager.h"
 
+#include "../InGameVisualInterface/InGameVisualInterface.h"
+
 CreateGameMenuVisualInterface::CreateGameMenuVisualInterface()
 	: backgroundEntity(WindowManager::get().getWindowWidth() / 2.0f
 		, WindowManager::get().getWindowHeight() / 2.0f
@@ -116,7 +118,10 @@ void CreateGameMenuVisualInterface::update()
 
 			int numberOfDices = std::stoi(this->numberOfDicesDataBox.getText());
 
-			// TODO: de trimis datele de mai sus catre server apoi
+
+			InGameVisualInterface::get().setReceivedUsername(username);
+			InGameVisualInterface::get().setReceivedNumDicesPerUser(numberOfDices);
+
 
 			Game::get().setStatus(Game::Status::IN_GAME);
 		}

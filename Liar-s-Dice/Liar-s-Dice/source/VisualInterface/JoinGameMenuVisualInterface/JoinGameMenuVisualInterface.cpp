@@ -6,6 +6,8 @@
 
 #include "../../AssetManager/AssetManager.h"
 
+#include "../InGameVisualInterface/InGameVisualInterface.h"
+
 JoinGameMenuVisualInterface::JoinGameMenuVisualInterface()
 	: backgroundEntity(WindowManager::get().getWindowWidth() / 2.0f
 		, WindowManager::get().getWindowHeight() / 2.0f
@@ -130,7 +132,15 @@ void JoinGameMenuVisualInterface::update()
 			for (int i = semiColonPos + 1; i < this->fullAddressDataBox.getText().size(); ++i)
 				port.push_back(this->fullAddressDataBox.getText()[i]);
 
-			// TODO: de trimis datele de mai sus catre client apoi
+
+
+
+			InGameVisualInterface::get().setReceivedUsername(username);
+			InGameVisualInterface::get().setReceivedServerIP(address);
+			InGameVisualInterface::get().setReceivedServerPort(std::stoi(port));
+
+
+
 
 			Game::get().setStatus(Game::Status::IN_GAME);
 		}

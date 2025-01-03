@@ -18,6 +18,8 @@ InGameVisualInterface::InGameVisualInterface()
 		, "hoveredButtonTexture", glm::vec3(1.0f, 1.0f, 1.0f)
 		, "hoveredButtonSound", "inactiveButtonTexture", glm::vec3(0.5f, 0.5f, 0.5f))
 	, gameStatusItCameFrom(Game::Status::NONE)
+	
+	, server(nullptr), client(nullptr)
 {
 
 }
@@ -46,6 +48,12 @@ void InGameVisualInterface::update()
 
 	this->backButton.update();
 
+
+	if (this->gameStatusItCameFrom == Game::Status::IN_CREATE_GAME_MENU)
+		this->server->update();
+	this->client->update();
+
+
 	if (this->backButton.anInteractionWillHappen())
 		Game::get().setStatus(this->gameStatusItCameFrom);
 }
@@ -53,4 +61,14 @@ void InGameVisualInterface::update()
 void InGameVisualInterface::resetResources()
 {
 	this->gameStatusItCameFrom = Game::get().getStatus();
+
+	if (this->gameStatusItCameFrom == Game::Status::IN_CREATE_GAME_MENU)
+	{
+		this->server = std::make_shared<Server>(this->receivedNumDicesPerUser);
+		this->client = std::make_shared<Client>("localhost", this->server->getPort(), this->receivedUsername); // localhost = 127.0.0.1
+	}
+	else // Game::Status::IN_JOIN_GAME_MENU
+	{
+		this->client = std::make_shared<Client>(this->receivedServerIP, this->receivedServerPort, this->receivedUsername);
+	}
 }
