@@ -21,6 +21,8 @@ protected:
 	TexturableEntity backgroundEntity;
 	TextEntity usernameTextEntity;
 	DataBox usernameDataBox;
+	TextEntity numberOfDicesTextEntity;
+	DataBox numberOfDicesDataBox;
 	Button createGameButton;
 	Button backButton;
 

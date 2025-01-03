@@ -92,7 +92,8 @@ void JoinGameMenuVisualInterface::update()
 	{
 		bool userNameOk = true;
 
-		// aici pot face verificari pe numele de utilizator
+		if (this->usernameDataBox.getText().empty())
+			userNameOk = false;
 
 		bool fullAddressOk = true;
 		int semiColonPos = -1;

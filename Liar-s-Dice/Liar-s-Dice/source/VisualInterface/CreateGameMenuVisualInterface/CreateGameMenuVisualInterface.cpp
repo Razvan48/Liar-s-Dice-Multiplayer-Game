@@ -21,6 +21,15 @@ CreateGameMenuVisualInterface::CreateGameMenuVisualInterface()
 		, WindowManager::get().getWindowWidth() / 1.75f
 		, WindowManager::get().getWindowHeight() / 10.0f
 		, 0.0f, "dataBoxTexture", "username")
+	, numberOfDicesTextEntity(WindowManager::get().getWindowWidth() / 5.0f
+		, WindowManager::get().getWindowHeight() / 3.0f
+		, WindowManager::get().getWindowWidth() / 2.5f
+		, WindowManager::get().getWindowHeight() / 10.0f, 0.0f, "Number of Dices:")
+	, numberOfDicesDataBox(WindowManager::get().getWindowWidth() / 1.5f
+		, WindowManager::get().getWindowHeight() / 3.0f
+		, WindowManager::get().getWindowWidth() / 1.75f
+		, WindowManager::get().getWindowHeight() / 10.0f
+		, 0.0f, "dataBoxTexture", "numberofdices")
 	, createGameButton(9.0f * WindowManager::get().getWindowWidth() / 10.0f
 		, WindowManager::get().getWindowHeight() / 15.0f
 		, WindowManager::get().getWindowWidth() / 5.5f
@@ -57,6 +66,9 @@ void CreateGameMenuVisualInterface::draw()
 	this->usernameTextEntity.draw();
 	this->usernameDataBox.draw();
 
+	this->numberOfDicesTextEntity.draw();
+	this->numberOfDicesDataBox.draw();
+
 	this->createGameButton.draw();
 
 	this->backButton.draw();
@@ -69,6 +81,9 @@ void CreateGameMenuVisualInterface::update()
 	this->usernameTextEntity.update();
 	this->usernameDataBox.update();
 
+	this->numberOfDicesTextEntity.update();
+	this->numberOfDicesDataBox.update();
+
 	this->createGameButton.update();
 
 	this->backButton.update();
@@ -77,11 +92,29 @@ void CreateGameMenuVisualInterface::update()
 	{
 		bool userNameOk = true;
 
-		// aici pot face verificari pe numele de utilizator
+		if (this->usernameDataBox.getText().empty())
+			userNameOk = false;
 
-		if (userNameOk)
+		bool numberOfDicesOk = true;
+
+		for (int i = 0; i < this->numberOfDicesDataBox.getText().size(); ++i)
+		{
+			if (!('0' <= this->numberOfDicesDataBox.getText()[i] && this->numberOfDicesDataBox.getText()[i] <= '9'))
+			{
+				numberOfDicesOk = false;
+				break;
+			}
+		}
+		if (!this->numberOfDicesDataBox.getText().empty() && this->numberOfDicesDataBox.getText()[0] == '0')
+			numberOfDicesOk = false;
+		if (this->numberOfDicesDataBox.getText().empty())
+			numberOfDicesOk = false;
+
+		if (userNameOk && numberOfDicesOk)
 		{
 			std::string username = this->usernameDataBox.getText();
+
+			int numberOfDices = std::stoi(this->numberOfDicesDataBox.getText());
 
 			// TODO: de trimis datele de mai sus catre server apoi
 
@@ -89,7 +122,11 @@ void CreateGameMenuVisualInterface::update()
 		}
 		else
 		{
-			this->usernameTextEntity.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
+			if (!userNameOk)
+				this->usernameTextEntity.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
+			if (!numberOfDicesOk)
+				this->numberOfDicesTextEntity.setColor(glm::vec3(1.0f, 0.0f, 0.0f));
+
 			AssetManager::get().playSound("errorSound", false, true);
 		}
 	}
@@ -100,4 +137,5 @@ void CreateGameMenuVisualInterface::update()
 void CreateGameMenuVisualInterface::resetResources()
 {
 	this->usernameTextEntity.setColor(glm::vec3(1.0f, 1.0f, 1.0f));
+	this->numberOfDicesTextEntity.setColor(glm::vec3(1.0f, 1.0f, 1.0f));
 }
