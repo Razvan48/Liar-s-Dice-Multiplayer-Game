@@ -20,6 +20,11 @@ InGameVisualInterface::InGameVisualInterface()
 	, gameStatusItCameFrom(Game::Status::NONE)
 	
 	, server(nullptr), client(nullptr)
+
+	, receivedNumDicesPerUser(0)
+	, receivedServerIP("")
+	, receivedServerPort(0)
+	, receivedUsername("")
 {
 
 }

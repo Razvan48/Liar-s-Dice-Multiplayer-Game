@@ -23,7 +23,9 @@ private:
 
 	std::string username;
 
+	float lastTimeTriedToSendInitialName;
 	bool hasToSendInitialName;
+	const float TIME_BETWEEN_INITIAL_NAME_SENDINGS;
 
 	void handlePacket(const ENetEvent& eNetEvent);
 

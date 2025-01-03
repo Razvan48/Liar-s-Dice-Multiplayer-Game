@@ -15,7 +15,9 @@ Client::Client(const std::string& serverIP, enet_uint16 serverPort, const std::s
 	, TIME_BETWEEN_PINGS(1.0f)
 	, lastTimeSentPing(0.0f)
 	, username(username)
+	, lastTimeTriedToSendInitialName(0.0f)
 	, hasToSendInitialName(true)
+	, TIME_BETWEEN_INITIAL_NAME_SENDINGS(1.0f)
 {
 	this->client = enet_host_create(NULL, this->MAX_NUM_SERVERS, this->NUM_CHANNELS, 0, 0); // 0, 0 inseamna fara limite la latimea de banda
 	if (client == NULL)
@@ -102,7 +104,11 @@ void Client::handlePacket(const ENetEvent& eNetEvent)
 
 	nlohmann::json receivedMessageJSON = nlohmann::json::parse(receivedMessage);
 
-	// fara ping-uri
+	// Fara Ping-uri !!!
+
+
+	if (receivedMessageJSON.contains("name"))
+		this->username = receivedMessageJSON["name"];
 
 	enet_packet_destroy(eNetEvent.packet);
 }
@@ -130,11 +136,14 @@ void Client::update()
 	// Trimitem ce informatii vitale stim deja catre server.
 	if (this->hasToSendInitialName)
 	{
-		nlohmann::json messageToSendJSON;
-		messageToSendJSON["initialName"] = this->username;
-		this->sendMessage(messageToSendJSON.dump(), this->hasToSendInitialName, this->lastTimeSentPing);
+		if (GlobalClock::get().getCurrentTime() - this->lastTimeTriedToSendInitialName > this->TIME_BETWEEN_INITIAL_NAME_SENDINGS)
+		{
+			this->lastTimeTriedToSendInitialName = GlobalClock::get().getCurrentTime();
 
-		return;
+			nlohmann::json messageToSendJSON;
+			messageToSendJSON["initialName"] = this->username;
+			this->sendMessage(messageToSendJSON.dump(), this->hasToSendInitialName, this->lastTimeSentPing);
+		}
 	}
 
 	// Vedem ce pachete am primit.

@@ -29,7 +29,6 @@ Server::~Server()
 
 	if (this->server != nullptr)
 		enet_host_destroy(this->server);
-	this->server = nullptr;
 }
 
 void Server::sendMessage(const User& user, const std::string& messageToSend, bool& failedToSendMessage) const
@@ -108,6 +107,7 @@ void Server::handlePacket(const ENetEvent& eNetEvent)
 			User newUser;
 			newUser.peer = eNetEvent.peer;
 			newUser.username = this->allocateNewName(receivedMessageJSON["initialName"]);
+			newUser.lastTimeSentPingToServer = GlobalClock::get().getCurrentTime();
 			this->users.push_back(newUser);
 		}
 
