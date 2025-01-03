@@ -143,6 +143,10 @@ void AssetManager::loadResources()
 	this->loadSound("dice0Sound", "assets/sounds/dice0Sound.mp3");
 	this->loadSound("dice1Sound", "assets/sounds/dice1Sound.mp3");
 
+	this->loadSound("draw0Sound", "assets/sounds/draw0Sound.mp3");
+	this->loadSound("draw1Sound", "assets/sounds/draw1Sound.mp3");
+	this->loadSound("draw2Sound", "assets/sounds/draw2Sound.mp3");
+
 	this->loadSound("errorSound", "assets/sounds/errorSound.mp3");
 
 	this->loadSound("hoveredButtonSound", "assets/sounds/hoveredButtonSound.mp3");
@@ -171,6 +175,9 @@ void AssetManager::loadResources()
 	this->loadTexture("dice5Texture", "assets/textures/dice5Texture.png");
 	this->loadTexture("dice6Texture", "assets/textures/dice6Texture.png");
 
+	this->loadTexture("handHidingTexture.png", "assets/textures/handHidingTexture.png");
+	this->loadTexture("handPointingTexture.png", "assets/textures/handPointingTexture.png");
+
 	this->loadTexture("hoveredArrowTexture", "assets/textures/hoveredArrowTexture.png");
 	this->loadTexture("hoveredButtonTexture", "assets/textures/hoveredButtonTexture.png");
 	this->loadTexture("inactiveArrowTexture", "assets/textures/inactiveArrowTexture.png");
@@ -179,6 +186,14 @@ void AssetManager::loadResources()
 	this->loadTexture("inGameBackgroundTexture", "assets/textures/inGameBackgroundTexture.png");
 	this->loadTexture("inputMenuBackgroundTexture", "assets/textures/inputMenuBackgroundTexture.png");
 	this->loadTexture("mainMenuBackgroundTexture", "assets/textures/mainMenuBackgroundTexture.png");
+
+	this->loadTexture("markedDice1Texture.png", "assets/textures/markedDice1Texture.png");
+	this->loadTexture("markedDice2Texture.png", "assets/textures/markedDice2Texture.png");
+	this->loadTexture("markedDice3Texture.png", "assets/textures/markedDice3Texture.png");
+	this->loadTexture("markedDice4Texture.png", "assets/textures/markedDice4Texture.png");
+	this->loadTexture("markedDice5Texture.png", "assets/textures/markedDice5Texture.png");
+	this->loadTexture("markedDice6Texture.png", "assets/textures/markedDice6Texture.png");
+
 	this->loadTexture("multiplayerMenuBackgroundTexture", "assets/textures/multiplayerMenuBackgroundTexture.png");
 	this->loadTexture("pointingArrowTexture", "assets/textures/pointingArrowTexture.png");
 	this->loadTexture("settingsMenuBackgroundTexture", "assets/textures/settingsMenuBackgroundTexture.png");
